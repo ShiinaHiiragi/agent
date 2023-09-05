@@ -6,7 +6,7 @@ import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ask from "../interface/api";
+import sendPrompts from "../interface/api";
 
 const Division = styled('div')(({ theme }) => ({
   padding: theme.spacing(1, 2, 2, 2),
@@ -26,19 +26,21 @@ function InputPanel(props) {
   const [prompts, setPrompts] = React.useState("");
   const [promptsDisabled, setPromptsDisabled] = React.useState(false);
   const [sendButtonLoading, setSendButtonLoading] = React.useState(false);
-  const sendAsk = React.useCallback(() => {
+  const handleClickSend = React.useCallback(() => {
     let savedPrompts = "";
     setSendButtonLoading(true);
     setPromptsDisabled(true);
+    setPrompts((prompts) => {
+      savedPrompts = prompts;
+      return "";
+    });
 
-    ask(savedPrompts).then((response) => {
+    sendPrompts(savedPrompts).then((response) => {
       setSendButtonLoading(false);
       setPromptsDisabled(false);
-      handleAppendBubbles(true, prompts);
-      handleAppendBubbles(false, response);
-      setPrompts("");
+      handleAppendBubbles(true, savedPrompts);
     });
-  }, [prompts, handleAppendBubbles])
+  }, [handleAppendBubbles])
 
   return (
     <Division>
@@ -50,7 +52,7 @@ function InputPanel(props) {
         size="md"
         variant="soft"
         disabled={promptsDisabled}
-        text={prompts}
+        value={prompts}
         onChange={(event) => setPrompts(event.target.value)}
         endDecorator={
           <Box
@@ -73,7 +75,7 @@ function InputPanel(props) {
               endDecorator={<SendIcon />}
               variant="solid"
               children="SEND"
-              onClick={sendAsk}
+              onClick={handleClickSend}
             />
           </Box>
         }

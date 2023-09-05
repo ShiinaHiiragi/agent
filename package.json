@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "electron .",
-    "dev": "react-scripts start"
+    "dev": "react-scripts start",
+    "build": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +50,7 @@
   },
   "build": {
     "appId": "com.electron.agent",
-    "productName": "agent",
+    "productName": "Agent",
     "copyright":"Copyright © 2023 Ichinoe",
     "linux": {
       "target": "AppImage"

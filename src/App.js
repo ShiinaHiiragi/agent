@@ -16,9 +16,6 @@ function App() {
   const handleAppendBubbles = React.useCallback((newBubble) => {
     setBubbles((bubbles) => [...bubbles, newBubble]);
   }, [setBubbles])
-  const handleClearBubbles = React.useCallback(() => {
-    setBubbles([])
-  }, [setBubbles])
 
   return (
     <CssVarsProvider theme={globalTheme}>
@@ -28,7 +25,6 @@ function App() {
         />
         <InputPanel
           handleAppendBubbles={handleAppendBubbles}
-          handleClearBubbles={handleClearBubbles}
         />
       </Root>
     </CssVarsProvider>

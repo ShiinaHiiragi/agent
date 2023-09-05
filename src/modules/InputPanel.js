@@ -22,8 +22,7 @@ const ButtonsField = styled('div')(({ theme }) => ({
 
 function InputPanel(props) {
   const {
-    handleAppendBubbles,
-    handleClearBubbles
+    handleAppendBubbles
   } = props
 
   const [sendButtonLoading, setSendButtonLoading] = React.useState(false);

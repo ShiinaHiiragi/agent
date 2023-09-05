@@ -3,7 +3,7 @@
   "author": "Ichinoe",
   "description": "AI agent based on LLM.",
   "version": "0.1.0",
-  "main": "main.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "private": true,
   "dependencies": {
@@ -20,8 +20,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "electron .",
-    "dev": "react-scripts start",
+    "start": "concurrently 'react-scripts start' 'wait-on http://localhost:3000 && electron .'",
+    "dev:react": "react-scripts start",
+    "dev:app": "electron .",
     "build": "electron-builder"
   },
   "eslintConfig": {
@@ -44,14 +45,22 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.2.1",
     "electron": "^26.1.0",
     "electron-builder": "^24.6.4",
-    "electron-packager": "^17.1.2"
+    "electron-packager": "^17.1.2",
+    "wait-on": "^7.0.1"
   },
   "build": {
     "appId": "com.electron.agent",
     "productName": "Agent",
-    "copyright":"Copyright © 2023 Ichinoe",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
     "linux": {
       "target": "AppImage"
     }

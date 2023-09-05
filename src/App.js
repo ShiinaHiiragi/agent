@@ -1,3 +1,4 @@
+import React from "react";
 import { CssVarsProvider, styled } from "@mui/joy/styles";
 import globalTheme from "./theme";
 import Session from "./modules/Session";
@@ -11,11 +12,24 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 function App() {
+  const [bubbles, setBubbles] = React.useState([])
+  const handleAppendBubbles = React.useCallback((newBubble) => {
+    setBubbles((bubbles) => [...bubbles, newBubble]);
+  }, [setBubbles])
+  const handleClearBubbles = React.useCallback(() => {
+    setBubbles([])
+  }, [setBubbles])
+
   return (
     <CssVarsProvider theme={globalTheme}>
       <Root>
-        <Session />
-        <InputPanel />
+        <Session
+          bubbles={bubbles}
+        />
+        <InputPanel
+          handleAppendBubbles={handleAppendBubbles}
+          handleClearBubbles={handleClearBubbles}
+        />
       </Root>
     </CssVarsProvider>
   );

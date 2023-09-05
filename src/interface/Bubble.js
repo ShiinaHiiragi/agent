@@ -9,8 +9,10 @@ const DialogueCard = styled(Card)(({ theme }) => ({
 }));
 
 const Bubble = (fromSelf, content) => {
+  const timeNow = new Date().getTime();
   return (
     <PaddingDivision
+      key={timeNow}
       sx={(theme) => ({
         alignSelf: fromSelf ? "flex-end" : "flex-start",
         maxWidth: "750px",

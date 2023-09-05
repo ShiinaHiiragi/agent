@@ -3,6 +3,7 @@ import { CssVarsProvider, styled } from "@mui/joy/styles";
 import globalTheme from "./theme";
 import Session from "./modules/Session";
 import InputPanel from "./modules/InputPanel";
+import Bubble from "./interface/Bubble";
 
 const Root = styled('div')(({ theme }) => ({
   width: "100wh",
@@ -13,8 +14,8 @@ const Root = styled('div')(({ theme }) => ({
 
 function App() {
   const [bubbles, setBubbles] = React.useState([])
-  const handleAppendBubbles = React.useCallback((newBubble) => {
-    setBubbles((bubbles) => [...bubbles, newBubble]);
+  const handleAppendBubbles = React.useCallback((...params) => {
+    setBubbles((bubbles) => [...bubbles, Bubble(...params)]);
   }, [setBubbles])
 
   return (

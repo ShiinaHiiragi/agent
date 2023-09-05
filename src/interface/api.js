@@ -1,4 +1,11 @@
 import shuntSpawner from "./shunt"
 
-// TODO
-const getCPU = shuntSpawner()
+const getCPU = shuntSpawner(
+    () => "CPU Info",
+    () => window.require("os").cpus()
+)
+
+export default getCPU;
+export {
+    getCPU
+};

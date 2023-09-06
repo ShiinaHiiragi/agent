@@ -20,7 +20,8 @@ const Span = styled('div')(({ theme }) => ({
 
 function InputPanel(props) {
   const {
-    handleAppendBubbles
+    handleAppendBubbles,
+    handleClearBubbles
   } = props
 
   const [prompts, setPrompts] = React.useState("");
@@ -66,7 +67,9 @@ function InputPanel(props) {
             }}
           >
             <IconButton variant="soft">
-              <DeleteOutlineIcon />
+              <DeleteOutlineIcon
+                onClick={handleClearBubbles}
+              />
             </IconButton>
             <Span />
             <Button

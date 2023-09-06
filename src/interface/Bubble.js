@@ -1,11 +1,9 @@
 import { styled } from "@mui/joy/styles";
 import Card from "@mui/joy/Card";
+import PackedMarkdown from "../components/Markdown";
 
 const PaddingDivision = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(2)
-}));
-
-const DialogueCard = styled(Card)(({ theme }) => ({
 }));
 
 const Bubble = (fromSelf, content) => {
@@ -24,14 +22,13 @@ const Bubble = (fromSelf, content) => {
         }
       })}
     >
-      <DialogueCard
+      <Card
         color={fromSelf ? "neutral" : "primary"}
         orientation="vertical"
         size="md"
         variant="soft"
-      >
-        {content}
-      </DialogueCard>
+        children={<PackedMarkdown children={content}/>}
+      />
     </PaddingDivision>
   );
 }

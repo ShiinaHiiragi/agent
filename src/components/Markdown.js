@@ -41,7 +41,7 @@ const PackedMarkdown = (props) => {
                 margin: "0",
                 border: "0",
                 fontSize: "0.9rem",
-                backgroundColor: "rgb(246, 248, 250)"
+                backgroundColor: "rgba(255, 255, 255, 0)"
               }}
               language={match[1]}
               PreTag="div"

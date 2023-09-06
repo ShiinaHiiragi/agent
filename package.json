@@ -31,7 +31,7 @@
   "scripts": {
     "start": "concurrently 'npm run dev:react' 'wait-on http://localhost:3000 && npm run dev:app'",
     "pack": "rm -rf ./build ./dist && npm run build:react && npm run build:app",
-    "dev:react": "react-scripts start",
+    "dev:react": "GENERATE_SOURCEMAP=false react-scripts start",
     "dev:app": "electron .",
     "build:react": "react-scripts build",
     "build:app": "electron-builder -c.extraMetadata.main=build/electron.js"

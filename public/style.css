@@ -25,3 +25,12 @@
 html {
   scrollbar-color: rgb(190, 190, 190) rgb(250, 250, 250);
 }
+
+.MuiTextarea-endDecorator>.MuiBox-root {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+.MuiTextarea-endDecorator>.MuiBox-root button {
+  -webkit-app-region: no-drag;
+}

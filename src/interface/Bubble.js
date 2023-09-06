@@ -23,6 +23,7 @@ const Bubble = (fromSelf, content) => {
       })}
     >
       <Card
+        className="markdown-body"
         color={fromSelf ? "neutral" : "primary"}
         orientation="vertical"
         size="md"

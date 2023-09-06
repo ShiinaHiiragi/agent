@@ -1,7 +1,7 @@
 import isWebview from "./constant"
 
-const shuntSpawner = (handleWebview, handleDesktop) => {
-  return (...param) => isWebview ? handleWebview(...param) : handleDesktop(...param);
-}
+const shuntSpawner = (handleWebview, handleDesktop) => (...param) => isWebview
+  ? handleWebview(...param)
+  : handleDesktop(...param);
 
 export default shuntSpawner;

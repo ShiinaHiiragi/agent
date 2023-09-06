@@ -23,11 +23,11 @@ const PackedMarkdown = (props) => {
             {...props}
           />
         ),
-        a: ({ node, ...props }) => (
+        a: ({ node, href, ...props }) => (
           <a
-            target="_blank"
+            target={href[0] === "#" ? "_self" : "_blank"}
             rel="noreferrer"
-            href={props.href}
+            href={href}
             children={props.children}
             {...props}
           />

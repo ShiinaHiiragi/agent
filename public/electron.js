@@ -1,7 +1,9 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron');
+const { app, Menu, BrowserWindow } = require('electron');
 const path = require('path');
 const isDevMode = require('electron-is-dev');
+
+Menu.setApplicationMenu(null);
 
 function createWindow() {
   // Create the browser window.
@@ -12,9 +14,13 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       enableRemoteModule: true,
-    }
+    },
+    // frame: false,
+    // transparent: true,
+    // backgroundColor: '#00000000'
   })
 
+  // mainWindow.Menu.setApplicationMenu(null);
   // and load the index.html of the app.
   if (isDevMode) {
     // mainWindow.webContents.openDevTools();

@@ -6,6 +6,9 @@ const Division = styled('div')(({ theme }) => ({
   flexDirection: "column",
   padding: theme.spacing(2, 2, 1, 2),
   overflow: "auto",
+  "& > :first-child": {
+    marginTop: "auto"
+  }
 }));
 
 function Session(props) {

@@ -13,11 +13,12 @@ const Division = styled('div')(({ theme }) => ({
 
 function Session(props) {
   const {
+    sessionRef,
     bubbles
   } = props
 
   return (
-    <Division>
+    <Division ref={sessionRef}>
       {bubbles}
     </Division>
   );

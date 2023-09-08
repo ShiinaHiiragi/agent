@@ -13,18 +13,25 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 function App() {
-  const [bubbles, setBubbles] = React.useState([])
+  const [bubbles, setBubbles] = React.useState([]);
   const handleAppendBubbles = React.useCallback((...params) => {
     setBubbles((bubbles) => [...bubbles, Bubble(...params)]);
-  }, [])
+  }, []);
   const handleClearBubbles = React.useCallback(() => {
     setBubbles([]);
-  }, [])
+  }, []);
+
+  const sessionRef = React.useRef(null);
+  React.useEffect(() => {
+    const current = sessionRef.current
+    current.scrollTop = current.scrollHeight;
+  }, [bubbles]);
 
   return (
     <CssVarsProvider theme={globalTheme}>
       <Root>
         <Session
+          sessionRef={sessionRef}
           bubbles={bubbles}
         />
         <InputPanel

@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@mui/joy/styles";
+import { sendAction } from "../interface/api";
 import Bubble from "../interface/Bubble";
 
 const Division = styled('div')(({ theme }) => ({
@@ -20,7 +21,7 @@ function Session(props) {
     setSessionList
   } = props
 
-  const handleActionClick = React.useCallback((name, index) => {
+  const handleActionClick = React.useCallback((name, remains) => {
     setSessionList((sessionList) => [
       ...sessionList,
       {
@@ -29,6 +30,20 @@ function Session(props) {
         content: `<code class="dialogue-user">${name}</code>`
       }
     ])
+    sendAction(name)
+      .then((data) => {
+        setSessionList((sessionList) => {
+          return [
+            ...sessionList,
+            {
+              type: "Bubble",
+              fromUser: false,
+              content: data.message,
+              actions: remains,
+            }
+          ];
+        });
+      });
   }, [setSessionList]);
 
   return (

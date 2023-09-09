@@ -19,7 +19,17 @@ const sendPrompts = shuntSpawner(
   })
 );
 
+const sendAction = shuntSpawner(
+  (prompts) => new Promise((resolve, reject) => {
+    post("/act", prompts).then(resolve).catch(reject);
+  }),
+  (prompts) => new Promise((resolve, reject) => {
+    post("/act", prompts).then(resolve).catch(reject);
+  })
+);
+
 export default sendPrompts;
 export {
-  sendPrompts
+  sendPrompts,
+  sendAction,
 };

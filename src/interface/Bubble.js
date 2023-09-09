@@ -62,9 +62,9 @@ const Bubble = (props) => {
             <ActionPad
               key={index}
               className="ActionPad"
-              children={item.name}
+              children={item}
               disabled={!actionsValid}
-              onClick={() => { handleActionClick(item.name, item.index) }}
+              onClick={() => { handleActionClick(item, actions.filter((func) => func !== item)) }}
             />
           ))}
         </ButtonGroup> : null}

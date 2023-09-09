@@ -6,7 +6,7 @@ import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import sendPrompts from "../interface/api";
+import { sendPrompts } from "../interface/api";
 
 const Division = styled('div')(({ theme }) => ({
   padding: theme.spacing(1, 2, 2, 2),
@@ -51,7 +51,7 @@ function InputPanel(props) {
       }
     ])
     sendPrompts(savedPrompts)
-      .then((res) => {
+      .then((data) => {
         setSendButtonLoading(false);
         setPromptsDisabled(false);
         setSessionList((sessionList) => {
@@ -60,11 +60,8 @@ function InputPanel(props) {
             {
               type: "Bubble",
               fromUser: false,
-              content: res.message,
-              actions: res.actions.map((item, index) => ({
-                name: item,
-                index: index + 1
-              })),
+              content: data.message,
+              actions: data.actions,
             }
           ];
         });

@@ -13,12 +13,6 @@ const Root = styled('div')(({ theme }) => ({
 
 function App() {
   const [bubbles, setBubbles] = React.useState([]);
-  const handleAppendBubbles = React.useCallback((...params) => {
-    setBubbles((bubbles) => [...bubbles, ...params]);
-  }, []);
-  const handleClearBubbles = React.useCallback(() => {
-    setBubbles([]);
-  }, []);
 
   const sessionRef = React.useRef(null);
   React.useEffect(() => {
@@ -34,8 +28,7 @@ function App() {
           bubbles={bubbles}
         />
         <InputPanel
-          handleAppendBubbles={handleAppendBubbles}
-          handleClearBubbles={handleClearBubbles}
+          setBubbles={setBubbles}
         />
       </Root>
     </CssVarsProvider>

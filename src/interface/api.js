@@ -1,11 +1,11 @@
 import shuntSpawner from "./shunt"
 
 const sendPrompts = shuntSpawner(
-  () => new Promise((resolve) => {
-    setTimeout(resolve, 500)
+  (prompts) => new Promise((resolve) => {
+    setTimeout(resolve, 2000, `Re: ${prompts}`)
   }),
   (prompts) => new Promise((resolve) => {
-    resolve(prompts);
+    resolve(`Re: ${prompts}`);
   })
 );
 

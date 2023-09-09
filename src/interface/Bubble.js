@@ -32,7 +32,8 @@ const Bubble = (props) => {
     fromUser,
     content,
     actions,
-    actionsValid
+    actionsValid,
+    handleActionClick
   } = props;
 
   return (
@@ -63,7 +64,7 @@ const Bubble = (props) => {
               className="ActionPad"
               children={item.name}
               disabled={!actionsValid}
-              onClick={() => { console.log(item.index, item.name) }}
+              onClick={() => { handleActionClick(item.name, item.index) }}
             />
           ))}
         </ButtonGroup> : null}

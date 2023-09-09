@@ -26,6 +26,7 @@ function App() {
         <Session
           sessionRef={sessionRef}
           sessionList={sessionList}
+          setSessionList={setSessionList}
         />
         <InputPanel
           setSessionList={setSessionList}

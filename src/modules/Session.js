@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "@mui/joy/styles";
 import Bubble from "../interface/Bubble";
 
@@ -15,8 +16,20 @@ const Division = styled('div')(({ theme }) => ({
 function Session(props) {
   const {
     sessionRef,
-    sessionList
+    sessionList,
+    setSessionList
   } = props
+
+  const handleActionClick = React.useCallback((name, index) => {
+    setSessionList((sessionList) => [
+      ...sessionList,
+      {
+        type: "Bubble",
+        fromUser: true,
+        content: `<code class="dialogue-user">${name}</code>`
+      }
+    ])
+  }, [setSessionList]);
 
   return (
     <Division ref={sessionRef}>
@@ -31,6 +44,7 @@ function Session(props) {
             )}
             actions={item.actions}
             actionsValid={index === sessionList.length - 1}
+            handleActionClick={handleActionClick}
           /> : null
       )}
     </Division>

@@ -3,7 +3,11 @@ import Card from "@mui/joy/Card";
 import PackedMarkdown from "../components/Markdown";
 
 const PaddingDivision = styled('div')(({ theme }) => ({
-  paddingBottom: theme.spacing(2)
+  paddingBottom: theme.spacing(2),
+  "& action": {
+    backgroundColor: theme.palette.primary.softHoverBg,
+    fontFamily: theme.fontFamily.code
+  }
 }));
 
 const Bubble = (props) => {

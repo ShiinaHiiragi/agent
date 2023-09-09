@@ -1,4 +1,5 @@
 import { styled } from "@mui/joy/styles";
+import Bubble from "../interface/Bubble";
 
 const Division = styled('div')(({ theme }) => ({
   flexGrow: 1,
@@ -19,7 +20,13 @@ function Session(props) {
 
   return (
     <Division ref={sessionRef}>
-      {bubbles}
+      {bubbles.map((item, index) =>
+        <Bubble
+          key={index}
+          fromSelf={item.fromSelf}
+          content={item.content}
+        />
+      )}
     </Division>
   );
 }

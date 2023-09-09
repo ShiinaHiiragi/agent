@@ -6,7 +6,7 @@ import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import sendPrompts from "../interface/api";
+// import sendPrompts from "../interface/api";
 
 const Division = styled('div')(({ theme }) => ({
   padding: theme.spacing(1, 2, 2, 2),
@@ -25,23 +25,30 @@ function InputPanel(props) {
   } = props
 
   const [prompts, setPrompts] = React.useState("");
+  const [savedPrompts, setSavedPrompts] = React.useState("");
   const [promptsDisabled, setPromptsDisabled] = React.useState(false);
   const [sendButtonLoading, setSendButtonLoading] = React.useState(false);
   const handleClickSend = React.useCallback(() => {
-    let savedPrompts = "";
     setSendButtonLoading(true);
     setPromptsDisabled(true);
-    setPrompts((prompts) => {
-      savedPrompts = prompts;
-      return "";
-    });
 
-    sendPrompts(savedPrompts).then((response) => {
-      setSendButtonLoading(false);
-      setPromptsDisabled(false);
-      handleAppendBubbles(true, savedPrompts);
-    });
+    setPrompts((prompts) => {
+      setSavedPrompts(prompts);
+      return "";
+    })
   }, [handleAppendBubbles])
+
+  // WARNING: savedPrompts ONLY changed in handleClickSend()
+  React.useEffect(() => {
+    if (savedPrompts.length == 0) {
+      return;
+    }
+
+    handleAppendBubbles({
+      fromSelf: true,
+      content: savedPrompts
+    })
+  }, [savedPrompts]);
 
   return (
     <Division>

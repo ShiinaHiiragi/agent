@@ -6,11 +6,16 @@ const PaddingDivision = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(2)
 }));
 
-const Bubble = (fromSelf, content) => {
-  const timeNow = new Date().getTime();
+const Bubble = (props) => {
+  const {
+    key,
+    fromSelf,
+    content
+  } = props;
+
   return (
     <PaddingDivision
-      key={timeNow}
+      key={key}
       sx={(theme) => ({
         alignSelf: fromSelf ? "flex-end" : "flex-start",
         maxWidth: "750px",
@@ -28,10 +33,10 @@ const Bubble = (fromSelf, content) => {
         orientation="vertical"
         size="md"
         variant="soft"
-        children={<PackedMarkdown children={content}/>}
+        children={<PackedMarkdown children={content} />}
       />
     </PaddingDivision>
-  );
-}
+  )
+};
 
 export default Bubble;

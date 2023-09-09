@@ -57,14 +57,19 @@ const Bubble = (props) => {
         variant="soft"
       >
         <PackedMarkdown children={content} />
-        {actions ? <ButtonGroup orientation="vertical">
+        {actions ? <ButtonGroup orientation="vertical" disabled={!actionsValid}>
           {actions.map((item, index) => (
             <ActionPad
               key={index}
               className="ActionPad"
-              children={item}
-              disabled={!actionsValid}
-              onClick={() => { handleActionClick(item, actions.filter((func) => func !== item)) }}
+              children={item.name}
+              disabled={item.disabled}
+              onClick={() => { handleActionClick(item.name, actions.map((act) => ({
+                name: act.name,
+                disabled: act.name === item.name
+                  ? true
+                  : act.disabled
+              })))}}
             />
           ))}
         </ButtonGroup> : null}

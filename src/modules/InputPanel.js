@@ -61,7 +61,10 @@ function InputPanel(props) {
               type: "Bubble",
               fromUser: false,
               content: data.message,
-              actions: data.actions,
+              actions: data.actions.map((item) => ({
+                name: item,
+                disabled: false
+              })),
             }
           ];
         });

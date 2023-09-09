@@ -24,7 +24,7 @@ function Session(props) {
         item.type === "Bubble"
           ? <Bubble
             key={index}
-            fromSelf={item.fromSelf}
+            fromUser={item.fromUser}
             content={item.content}
             actions={item.actions}
             actionsValid={index === sessionList.length - 1}

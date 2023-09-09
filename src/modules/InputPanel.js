@@ -46,7 +46,7 @@ function InputPanel(props) {
       ...sessionList,
       {
         type: "Bubble",
-        fromSelf: true,
+        fromUser: true,
         content: savedPrompts
       }
     ])
@@ -59,7 +59,7 @@ function InputPanel(props) {
             ...sessionList,
             {
               type: "Bubble",
-              fromSelf: false,
+              fromUser: false,
               content: res.message,
               actions: res.actions.map((item, index) => ({
                 name: item,

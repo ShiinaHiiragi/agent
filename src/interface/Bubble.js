@@ -34,7 +34,7 @@ const ActionPad = styled(Button)(({ theme }) => ({
 
 const Bubble = (props) => {
   const {
-    fromSelf,
+    fromUser,
     content,
     actions,
     actionsValid
@@ -43,19 +43,19 @@ const Bubble = (props) => {
   return (
     <PaddingDivision
       sx={(theme) => ({
-        alignSelf: fromSelf ? "flex-end" : "flex-start",
+        alignSelf: fromUser ? "flex-end" : "flex-start",
         maxWidth: "750px",
         [theme.breakpoints.only("sm")]: {
-          [fromSelf ? "paddingLeft" : "paddingRight"]: "min(40px, 10%)"
+          [fromUser ? "paddingLeft" : "paddingRight"]: "min(40px, 10%)"
         },
         [theme.breakpoints.up("sm")]: {
-          [fromSelf ? "paddingLeft" : "paddingRight"]: "9%",
+          [fromUser ? "paddingLeft" : "paddingRight"]: "9%",
         }
       })}
     >
       <Card
-        className={clsx("markdown-body", fromSelf ? "dialogue-user" : "dialogue-cpu")}
-        color={fromSelf ? "neutral" : "primary"}
+        className={clsx("markdown-body", fromUser ? "dialogue-user" : "dialogue-cpu")}
+        color={fromUser ? "neutral" : "primary"}
         orientation="vertical"
         size="md"
         variant="soft"

@@ -1,4 +1,4 @@
-import isWebview from "./constant"
+import { isWebview } from "./constant"
 
 const shuntSpawner = (handleWebview, handleDesktop) => (...param) => isWebview
   ? handleWebview(...param)

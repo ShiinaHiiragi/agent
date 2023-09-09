@@ -25,7 +25,10 @@ function Session(props) {
           ? <Bubble
             key={index}
             fromUser={item.fromUser}
-            content={item.content}
+            content={item.content.replaceAll(
+              /<action>(.+?)<\/action>/g,
+              "<code class='dialogue-cpu'>$1</code>"
+            )}
             actions={item.actions}
             actionsValid={index === sessionList.length - 1}
           /> : null

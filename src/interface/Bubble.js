@@ -8,19 +8,14 @@ import ButtonGroup from "@mui/joy/ButtonGroup";
 
 const PaddingDivision = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(2),
-  "& action": {
-    backgroundColor: theme.palette.primary.softHoverBg,
+  "& code, pre": {
     fontFamily: theme.fontFamily.code,
     fontSize: theme.fontSize.md
   },
-  "& code": {
-    fontFamily: theme.fontFamily.code,
-    fontSize: theme.fontSize.md
-  },
-  "& code.dialogue-user": {
+  "& code.dialogue-user, pre.dialogue-user": {
     backgroundColor: theme.palette.neutral.softHoverBg
   },
-  "& code.dialogue-cpu": {
+  "& code.dialogue-cpu, pre.dialogue-cpu": {
     backgroundColor: theme.palette.primary.softHoverBg
   },
 }));

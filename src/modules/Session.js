@@ -15,12 +15,12 @@ const Division = styled('div')(({ theme }) => ({
 function Session(props) {
   const {
     sessionRef,
-    bubbles
+    sessionList
   } = props
 
   return (
     <Division ref={sessionRef}>
-      {bubbles.map((item, index) =>
+      {sessionList.map((item, index) =>
         <Bubble
           key={index}
           fromSelf={item.fromSelf}

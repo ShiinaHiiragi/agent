@@ -20,7 +20,7 @@ const Span = styled('div')(({ theme }) => ({
 
 function InputPanel(props) {
   const {
-    setBubbles
+    setSessionList
   } = props
 
   const [prompts, setPrompts] = React.useState("");
@@ -42,8 +42,8 @@ function InputPanel(props) {
       return;
     }
 
-    setBubbles((bubbles) => [
-      ...bubbles,
+    setSessionList((sessionList) => [
+      ...sessionList,
       {
         fromSelf: true,
         content: savedPrompts
@@ -53,8 +53,8 @@ function InputPanel(props) {
       .then((res) => {
         setSendButtonLoading(false);
         setPromptsDisabled(false);
-        setBubbles((bubbles) => [
-          ...bubbles,
+        setSessionList((sessionList) => [
+          ...sessionList,
           {
             fromSelf: false,
             content: res.message
@@ -94,11 +94,12 @@ function InputPanel(props) {
           >
             <IconButton variant="soft">
               <DeleteOutlineIcon
-                onClick={() => { setBubbles([]) }}
+                onClick={() => { setSessionList([]) }}
               />
             </IconButton>
             <Span />
             <Button
+              disabled={prompts.length === 0}
               loading={sendButtonLoading}
               loadingPosition="end"
               endDecorator={<SendIcon />}

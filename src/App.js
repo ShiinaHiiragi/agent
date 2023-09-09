@@ -12,23 +12,23 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 function App() {
-  const [bubbles, setBubbles] = React.useState([]);
+  const [sessionList, setSessionList] = React.useState([]);
 
   const sessionRef = React.useRef(null);
   React.useEffect(() => {
     const current = sessionRef.current
     current.scrollTop = current.scrollHeight;
-  }, [bubbles]);
+  }, [sessionList]);
 
   return (
     <CssVarsProvider theme={globalTheme}>
       <Root>
         <Session
           sessionRef={sessionRef}
-          bubbles={bubbles}
+          sessionList={sessionList}
         />
         <InputPanel
-          setBubbles={setBubbles}
+          setSessionList={setSessionList}
         />
       </Root>
     </CssVarsProvider>

@@ -25,7 +25,8 @@ const Bubble = (props) => {
     key,
     fromSelf,
     content,
-    actions
+    actions,
+    actionsValid
   } = props;
 
   return (
@@ -55,6 +56,7 @@ const Bubble = (props) => {
             <ActionPad
               className="ActionPad"
               children={item}
+              disabled={!actionsValid}
             />
           ))}
         </ButtonGroup> : null}

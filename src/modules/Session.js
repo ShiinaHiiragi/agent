@@ -26,6 +26,7 @@ function Session(props) {
             fromSelf={item.fromSelf}
             content={item.content}
             actions={item.actions}
+            actionsValid={index === sessionList.length - 1}
           /> : null
       )}
     </Division>

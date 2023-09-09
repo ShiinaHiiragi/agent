@@ -50,16 +50,21 @@ function InputPanel(props) {
       }
     ])
     sendPrompts(savedPrompts)
-      .then((response) => {
+      .then((res) => {
         setSendButtonLoading(false);
         setPromptsDisabled(false);
+        console.log(res.data);
         setBubbles((bubbles) => [
           ...bubbles,
           {
             fromSelf: false,
-            content: response
+            content: JSON.stringify(res.data)
           }
         ]);
+      })
+      .catch((err) => {
+        // TODO: show error info
+        console.error(err);
       })
   // WARNING: savedPrompts ONLY changed in handleClickSend()
   // eslint-disable-next-line

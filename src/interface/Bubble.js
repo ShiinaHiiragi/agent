@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { styled } from "@mui/joy/styles";
 import Card from "@mui/joy/Card";
 import PackedMarkdown from "../components/Markdown";
@@ -9,8 +10,19 @@ const PaddingDivision = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(2),
   "& action": {
     backgroundColor: theme.palette.primary.softHoverBg,
-    fontFamily: theme.fontFamily.code
-  }
+    fontFamily: theme.fontFamily.code,
+    fontSize: theme.fontSize.md
+  },
+  "& code": {
+    fontFamily: theme.fontFamily.code,
+    fontSize: theme.fontSize.md
+  },
+  "& code.dialogue-user": {
+    backgroundColor: theme.palette.neutral.softHoverBg
+  },
+  "& code.dialogue-cpu": {
+    backgroundColor: theme.palette.primary.softHoverBg
+  },
 }));
 
 const ActionPad = styled(Button)(({ theme }) => ({
@@ -42,7 +54,7 @@ const Bubble = (props) => {
       })}
     >
       <Card
-        className="markdown-body"
+        className={clsx("markdown-body", fromSelf ? "dialogue-user" : "dialogue-cpu")}
         color={fromSelf ? "neutral" : "primary"}
         orientation="vertical"
         size="md"
@@ -56,7 +68,7 @@ const Bubble = (props) => {
               className="ActionPad"
               children={item.name}
               disabled={!actionsValid}
-              onClick={() => { console.log(item.index) }}
+              onClick={() => { console.log(item.index, item.name) }}
             />
           ))}
         </ButtonGroup> : null}

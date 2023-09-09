@@ -45,6 +45,7 @@ function InputPanel(props) {
     setSessionList((sessionList) => [
       ...sessionList,
       {
+        type: "Bubble",
         fromSelf: true,
         content: savedPrompts
       }
@@ -53,13 +54,17 @@ function InputPanel(props) {
       .then((res) => {
         setSendButtonLoading(false);
         setPromptsDisabled(false);
-        setSessionList((sessionList) => [
-          ...sessionList,
-          {
-            fromSelf: false,
-            content: res.message
-          }
-        ]);
+        setSessionList((sessionList) => {
+          return [
+            ...sessionList,
+            {
+              type: "Bubble",
+              fromSelf: false,
+              content: res.message,
+              actions: res.actions,
+            }
+          ];
+        });
       })
       .catch((err) => {
         // TODO: show error info

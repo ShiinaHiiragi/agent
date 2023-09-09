@@ -21,11 +21,12 @@ function Session(props) {
   return (
     <Division ref={sessionRef}>
       {sessionList.map((item, index) =>
-        <Bubble
-          key={index}
-          fromSelf={item.fromSelf}
-          content={item.content}
-        />
+        item.type === "Bubble"
+          ? <Bubble
+            fromSelf={item.fromSelf}
+            content={item.content}
+            actions={item.actions}
+          /> : null
       )}
     </Division>
   );

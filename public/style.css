@@ -34,3 +34,11 @@ html {
 .MuiTextarea-endDecorator>.MuiBox-root button {
   -webkit-app-region: no-drag;
 }
+
+.ActionPad:hover {
+  background-color: var(--joy-palette-primary-200, #C7DFF7) !important
+}
+
+.ActionPad:active {
+  background-color: var(--joy-palette-primary-300, #97C3F0) !important 
+}

@@ -9,7 +9,7 @@ const globalTheme = extendTheme({
       lg: 750,
       xl: 1000,
     },
-  },
+  }
 });
 
 export default globalTheme;

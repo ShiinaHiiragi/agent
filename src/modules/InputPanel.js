@@ -53,12 +53,11 @@ function InputPanel(props) {
       .then((res) => {
         setSendButtonLoading(false);
         setPromptsDisabled(false);
-        console.log(res.data);
         setBubbles((bubbles) => [
           ...bubbles,
           {
             fromSelf: false,
-            content: JSON.stringify(res.data)
+            content: res.message
           }
         ]);
       })

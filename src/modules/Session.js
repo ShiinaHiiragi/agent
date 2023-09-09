@@ -23,6 +23,7 @@ function Session(props) {
       {sessionList.map((item, index) =>
         item.type === "Bubble"
           ? <Bubble
+            key={index}
             fromSelf={item.fromSelf}
             content={item.content}
             actions={item.actions}

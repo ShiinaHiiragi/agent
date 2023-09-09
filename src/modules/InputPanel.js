@@ -61,7 +61,10 @@ function InputPanel(props) {
               type: "Bubble",
               fromSelf: false,
               content: res.message,
-              actions: res.actions,
+              actions: res.actions.map((item, index) => ({
+                name: item,
+                index: index + 1
+              })),
             }
           ];
         });
@@ -69,6 +72,9 @@ function InputPanel(props) {
       .catch((err) => {
         // TODO: show error info
         console.error(err);
+      })
+      .finally(() => {
+        setSavedPrompts("");
       })
   // WARNING: savedPrompts ONLY changed in handleClickSend()
   // eslint-disable-next-line

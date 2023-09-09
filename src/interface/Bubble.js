@@ -22,7 +22,6 @@ const ActionPad = styled(Button)(({ theme }) => ({
 
 const Bubble = (props) => {
   const {
-    key,
     fromSelf,
     content,
     actions,
@@ -31,7 +30,6 @@ const Bubble = (props) => {
 
   return (
     <PaddingDivision
-      key={key}
       sx={(theme) => ({
         alignSelf: fromSelf ? "flex-end" : "flex-start",
         maxWidth: "750px",
@@ -52,11 +50,13 @@ const Bubble = (props) => {
       >
         <PackedMarkdown children={content} />
         {actions ? <ButtonGroup orientation="vertical">
-          {actions.map((item) => (
+          {actions.map((item, index) => (
             <ActionPad
+              key={index}
               className="ActionPad"
-              children={item}
+              children={item.name}
               disabled={!actionsValid}
+              onClick={() => { console.log(item.index) }}
             />
           ))}
         </ButtonGroup> : null}

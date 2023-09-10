@@ -15,12 +15,12 @@
 
     ```shell
     # in NLUI/
-    python http.py
+    python backend.py
     ```
 
     > ATTENTION: This is an early access version. Python's automatic start will be implemented in later versions.
 
-3. For development, execute `npm start` and wait for electron to start.
+3. For development, execute `npm start` and wait for react webpage and electron to start.
 
     For users, execute `npm run pack` and wait for build version.
 

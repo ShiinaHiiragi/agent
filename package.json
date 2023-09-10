@@ -1,7 +1,7 @@
 {
   "name": "agent",
-  "author": "Ichinoe",
-  "description": "AI agent based on LLM.",
+  "author": "Ichinoe <shiinahiiragi@outlook.com>",
+  "description": "AI agent powered by LLM.",
   "version": "0.1.0",
   "main": "public/electron.js",
   "homepage": "./",
@@ -31,11 +31,11 @@
   },
   "scripts": {
     "start": "concurrently 'npm run dev:react' 'wait-on http://localhost:3000 && npm run dev:app'",
-    "pack": "rm -rf ./build ./dist && npm run build:react && npm run build:app",
+    "pack": "npm run build:react && npm run build:app",
     "dev:react": "GENERATE_SOURCEMAP=false react-scripts start",
     "dev:app": "electron .",
-    "build:react": "react-scripts build",
-    "build:app": "electron-builder -c.extraMetadata.main=build/electron.js"
+    "build:react": "rm -rf ./build && react-scripts build",
+    "build:app": "rm -rf ./dist && electron-builder -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [
@@ -74,10 +74,24 @@
       "buildResources": "assets"
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "portable"
+        },
+        {
+          "target": "nsis"
+        }
+      ]
     },
     "linux": {
-      "target": "AppImage",
+      "target": [
+        {
+          "target": "appImage"
+        },
+        {
+          "target": "deb"
+        }
+      ],
       "category": "Utility"
     },
     "mac": {

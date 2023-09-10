@@ -14,17 +14,10 @@ const Root = styled('div')(({ theme }) => ({
 function App() {
   const [sessionList, setSessionList] = React.useState([]);
 
-  const sessionRef = React.useRef(null);
-  React.useEffect(() => {
-    const current = sessionRef.current
-    current.scrollTop = current.scrollHeight;
-  }, [sessionList]);
-
   return (
     <CssVarsProvider theme={globalTheme}>
       <Root>
         <Session
-          sessionRef={sessionRef}
           sessionList={sessionList}
           setSessionList={setSessionList}
         />

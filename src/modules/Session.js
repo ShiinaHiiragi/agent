@@ -2,25 +2,29 @@ import React from "react";
 import { styled } from "@mui/joy/styles";
 import { sendAction } from "../interface/api";
 import Bubble from "../interface/Bubble";
+import ScrollToBottom, { useScrollToBottom } from "react-scroll-to-bottom";
 
-const Division = styled('div')(({ theme }) => ({
-  flexGrow: 1,
-  display: "flex",
-  flexDirection: "column",
-  padding: theme.spacing(2, 2, 1, 2),
+const Division = styled(ScrollToBottom)(({ theme }) => ({
   overflow: "auto",
-  "& > :first-of-type": {
-    marginTop: "auto"
+  padding: theme.spacing(2, 1, 1, 2),
+  flexGrow: 1,
+  "& >div": {
+    overflow: "visible",
+    display: "flex",
+    flexDirection: "column",
+    "& > :first-of-type": {
+      marginTop: "auto"
+    }
   }
 }));
 
 function Session(props) {
   const {
-    sessionRef,
     sessionList,
     setSessionList
   } = props
 
+  const scrollToBottom = useScrollToBottom();
   const handleActionClick = React.useCallback((name, remains) => {
     setSessionList((sessionList) => [
       ...sessionList,
@@ -47,7 +51,7 @@ function Session(props) {
   }, [setSessionList]);
 
   return (
-    <Division ref={sessionRef}>
+    <Division>
       {sessionList.map((item, index) =>
         item.type === "Bubble"
           ? <Bubble

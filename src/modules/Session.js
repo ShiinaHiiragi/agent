@@ -2,18 +2,18 @@ import React from "react";
 import { styled } from "@mui/joy/styles";
 import { sendAction } from "../interface/api";
 import Bubble from "../interface/Bubble";
-import ScrollToBottom, { useScrollToBottom } from "react-scroll-to-bottom";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const Division = styled(ScrollToBottom)(({ theme }) => ({
   overflow: "auto",
-  padding: theme.spacing(2, 1, 1, 2),
+  paddingBottom: theme.spacing(1),
   flexGrow: 1,
   "& >div": {
-    overflow: "visible",
     display: "flex",
     flexDirection: "column",
     "& > :first-of-type": {
-      marginTop: "auto"
+      marginTop: "auto",
+      paddingTop: theme.spacing(2)
     }
   }
 }));
@@ -24,7 +24,6 @@ function Session(props) {
     setSessionList
   } = props
 
-  const scrollToBottom = useScrollToBottom();
   const handleActionClick = React.useCallback((name, remains) => {
     setSessionList((sessionList) => [
       ...sessionList,

@@ -39,14 +39,15 @@ const Bubble = (props) => {
   return (
     <PaddingDivision
       sx={(theme) => ({
-        alignSelf: fromUser ? "flex-end" : "flex-start",
         maxWidth: "750px",
+        alignSelf: fromUser ? "flex-end" : "flex-start",
         [theme.breakpoints.only("sm")]: {
           [fromUser ? "paddingLeft" : "paddingRight"]: "min(40px, 10%)"
         },
         [theme.breakpoints.up("sm")]: {
           [fromUser ? "paddingLeft" : "paddingRight"]: "9%",
-        }
+        },
+        [fromUser ? "paddingRight" : "paddingLeft"]: theme.spacing(fromUser ? 1 : 2)
       })}
     >
       <Card
